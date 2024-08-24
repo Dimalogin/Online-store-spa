@@ -1,106 +1,75 @@
 // Style
 
 // Scripts
+import State from "../state/state";
+
+import WrapperView from "./view/wrapper/wrapperView";
+import HeaderView from "./view/wrapper/header/headerView";
+
+import { Pages, ID_SELECTOR } from "../pages/pages";
 
 // Types
+
+import { Routes } from "../types/types";
 
 // Parameters
 
 export default class App {
-  #header: HTMLElement | null = null;
+  #wrapperView: HTMLElement | null = null;
+  #headerView: HeaderView | null = null;
+
+  #state: State | null = null;
+  #routes: Routes | null = null;
 
   constructor() {
-    // this.header = null;
+    this.#setState();
+    this.#setRoutes();
     // this.main = null;
-    // const state = new State();
+
     // const routes = this.createRoutes(state);
     // this.router = new Router(routes);
     /**
      * Раскомментировать для использования # в строке браузера
      */
     // this.router.setHashHandler();
-    // this.createView();
+    this.createView();
   }
 
-  /*
+  #setState() {
+    this.#state = new State();
+  }
+
+  #setRoutes() {
+    this.#routes = this.createRoutes(this.#state!);
+  }
+
+  #createHeaderView() {
+    this.#headerView = new HeaderView();
+  }
+
   createView() {
-    this.header = new HeaderView(this.router);
-    this.main = new MainView();
-    const footer = new FooterView();
+    //this.header = new HeaderView(this.router);
+    //this.main = new MainView();
+    // const footer = new FooterView();
 
-    document.body.append(
-      this.header.getHtmlElement(),
-      this.main.getHtmlElement(),
-      footer.getHtmlElement()
-    );
+    const wrapper = new WrapperView();
+    document.body.append(wrapper.getHtmlElement());
   }
 
-  /*
-   * @param {State} state
-   * @return {Array<import('./router/router').Route>}
-   */
-
-  /*
-  createRoutes(state) {
+  createRoutes(state: State) {
     return [
       {
         path: ``,
         callback: async () => {
-          const { default: IndexView } = await import(
-            "./view/main/index/index-view"
-          );
+          const IndexView  = 
           this.setContent(Pages.INDEX, new IndexView(state));
-        },
-      },
-      {
-        path: `${Pages.INDEX}`,
-        callback: async () => {
-          const { default: IndexView } = await import(
-            "./view/main/index/index-view"
-          );
-          this.setContent(Pages.INDEX, new IndexView(state));
-        },
-      },
-      {
-        path: `${Pages.PRODUCT}`,
-        callback: async () => {
-          const { default: ProductView } = await import(
-            "./view/main/product/product-view"
-          );
-          this.setContent(Pages.PRODUCT, new ProductView(this.router));
-        },
-      },
-      {
-        path: `${Pages.PRODUCT}/${ID_SELECTOR}`,
-        callback: async (id) => {
-          const { default: ProductView } = await import(
-            "./view/main/product/product-view"
-          );
-          this.setContent(Pages.PRODUCT, new ProductView(this.router, id));
-        },
-      },
-      {
-        path: `${Pages.NOT_FOUND}`,
-        callback: async () => {
-          const { default: NotFoundView } = await import(
-            "./view/main/not-found/not-found-view"
-          );
-          this.setContent(Pages.NOT_FOUND, new NotFoundView());
         },
       },
     ];
   }
 
-  /**
-   * @param {string} page
-   * @param {import('./view/view').default} view
-   */
-
-  /*
   setContent(page, view) {
     this.header.setSelectedItem(page);
     this.main.setContent(view);
   }
-
-*/
 }
