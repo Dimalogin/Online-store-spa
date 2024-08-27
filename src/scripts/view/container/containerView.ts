@@ -4,11 +4,11 @@ import "./containerView.scss";
 
 // Scripts
 
-import View from "../../view";
+import View from "../view";
 
 // Types
 
-import { ContainerParams, ElementParams } from "../../../../types/types";
+import { ContainerParams, ElementParams } from "../../../types/types";
 
 // Parameters
 

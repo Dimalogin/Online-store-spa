@@ -3,8 +3,13 @@
 import { PagesParams } from "../types/types";
 
 const Pages: PagesParams = {
-  INDEX: "index",
-  PRODUCT: "product",
+  HOME: "home",
+  CATALOG: "catalog",
+  REVIEWS: "reviews",
+  ABOUT: "about",
+  ACCOUNT: "account",
+  FAVORITES: "favorites",
+  SHOPPING_CART: "shoopingCard",
   NOT_FOUND: "not-found",
 };
 

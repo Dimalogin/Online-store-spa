@@ -1,7 +1,7 @@
 const KEY_FOR_SAVE_STATE_TO_LOCALSTORAGE = "stateStore";
 
 export default class State {
-  fields: null = null;
+  fields:  | null = null;
 
   constructor() {
     //window.addEventListener("beforeunload", this.saveState.bind(this));
@@ -15,7 +15,10 @@ export default class State {
 
     if (storageItem) {
       const fieldObject = JSON.parse(storageItem);
+      return new Map(Object.entries(fieldObject));
     }
+
+    return new Map();
   }
 
   /*
