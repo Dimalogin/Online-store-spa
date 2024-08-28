@@ -1,21 +1,3 @@
-const headerNavTemplate = document.createElement("template");
-
-headerNavTemplate.innerHTML = `
-<nav>
-  <ul>
-    <li>
-      <a class = 'nav-link-home' href = '#home'>Home</a>
-    </li>
-    <li>
-      <a href = '#catalog'>Catalog</a>
-    </li>
-    <li>
-      <a href='#about'>About</a>  
-    </li>
-  </ul>
-</nav>
-`;
-
 // Styles
 
 import "./headerView.scss";
@@ -24,11 +6,25 @@ import "./headerView.scss";
 
 import View from "../view";
 import ContainerView from "../container/containerView";
-//import HeaderBodyView from "./headerBody/headerBodyView";
+import HeaderBodyView from "./headerBodyView/headerBodyView";
+import { Pages } from "../../../pages/pages";
 
 // Types
 
 import { ElementParams } from "../../../types/types";
+import { LinksParams } from "../../../types/types";
+
+// Pages
+
+const NamesLinks: LinksParams = {
+  HOME: "home",
+  CATALOG: "catalog",
+  REVIEWS: "reviews",
+  ABOUT: "about",
+  ACCOUNT: "account",
+  FAVORITES: "favorites",
+  SHOPPING_CART: "shopping_cart",
+};
 
 // Parameters
 
@@ -42,9 +38,7 @@ const cssClasses = {
 
 export default class HeaderView extends View {
   #containerView: HTMLElement | null = null;
-  #headerNavFullView: DocumentFragment | null = null;
-
-  #navLinkHome: HTMLElement | null = null;
+  #headerBodyView: HTMLElement | null = null;
 
   constructor() {
     const params: ElementParams = {
@@ -59,22 +53,10 @@ export default class HeaderView extends View {
 
     super(params);
 
-    this.#initHeaderNavTemplate();
-
     this.#createContainerView();
-    this.#createHeaderNavView();
-    //this.#createHeaderBodyView();
+    this.#createHeaderBodyView();
 
-    this.#bindListeners();
     this.#configureView();
-  }
-
-  #initHeaderNavTemplate() {
-    this.#headerNavFullView = headerNavTemplate.content.cloneNode(
-      true
-    ) as DocumentFragment;
-
-    this.#navLinkHome = this.#headerNavFullView.querySelector(".nav-link-home");
   }
 
   #createContainerView(): void {
@@ -86,19 +68,10 @@ export default class HeaderView extends View {
     this.#containerView = containerView.getHtmlElement();
   }
 
-  #createHeaderNavView() {
-    this.#containerView?.appendChild(this.#headerNavFullView!);
-  }
-
-  /*
   #createHeaderBodyView(): void {
     const headerBodyView = new HeaderBodyView();
-
     this.#containerView?.appendChild(headerBodyView.getHtmlElement());
   }
-*/
-
-  #bindListeners() {}
 
   #configureView() {
     this.viewElementCreator?.addInnerElement(this.#containerView!);

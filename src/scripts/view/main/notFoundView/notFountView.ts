@@ -27,7 +27,7 @@ export default class NotFoundView extends View {
     const params: ElementParams = {
       tag: tag.TAG,
       classNames: [],
-      textContent: "",
+      textContent: "Page Not Found",
       callback: null,
       attributes: [],
       identificators: [],
@@ -35,15 +35,5 @@ export default class NotFoundView extends View {
     };
 
     super(params);
-    this.#createContainerView();
-  }
-
-  #createContainerView(): void {
-    const mainContainerParams = {
-      CONTAINER: "main",
-    };
-
-    const containerView = new ContainerView(mainContainerParams);
-    this.#containerView = containerView.getHtmlElement();
   }
 }

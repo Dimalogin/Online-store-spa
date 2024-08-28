@@ -36,7 +36,6 @@ export default class Router {
     */
 
   navigate(url: string | null) {
-    console.log(url);
     this.#handler!.navigate(url);
   }
 
@@ -49,8 +48,6 @@ export default class Router {
 
     const route = this.#routes!.find((item) => item.path === pathForFind);
 
-    console.log(route);
-
     if (!route) {
       this.redirectToNotFoundPage();
       return;
@@ -60,12 +57,9 @@ export default class Router {
   }
 
   redirectToNotFoundPage() {
-    console.log("start");
     const notFoundPage = this.#routes!.find(
       (item) => item.path === Pages.NOT_FOUND
     );
-    console.log(notFoundPage);
-
     if (notFoundPage) {
       this.navigate(notFoundPage.path);
     }

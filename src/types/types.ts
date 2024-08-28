@@ -52,3 +52,13 @@ export type HashRouterHandlerParams = {
   nameEvent: "hashchange";
   locationField: "hash";
 };
+
+export type LinksParams = {
+  HOME: string;
+  CATALOG: string;
+  REVIEWS: string;
+  ABOUT: string;
+  ACCOUNT: string;
+  FAVORITES: string;
+  SHOPPING_CART: string;
+};

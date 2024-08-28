@@ -38,6 +38,7 @@ export default class MainView extends View {
 
     super(params);
     this.#createContainerView();
+    this.#configureView();
   }
 
   #createContainerView(): void {
@@ -49,12 +50,17 @@ export default class MainView extends View {
     this.#containerView = containerView.getHtmlElement();
   }
 
+  #configureView() {
+    this.viewElementCreator!.addInnerElement(this.#containerView!);
+  }
+
   setContent(content: Components) {
-    const htmlElement = this.viewElementCreator!.getElement();
+    const htmlElement = this.#containerView as HTMLElement;
 
     while (htmlElement.firstElementChild) {
       htmlElement.firstElementChild.remove();
     }
-    this.viewElementCreator!.addInnerElement(content.getHtmlElement());
+
+    htmlElement.appendChild(content.getHtmlElement());
   }
 }

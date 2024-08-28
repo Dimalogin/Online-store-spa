@@ -1,0 +1,27 @@
+.header__logo {
+  display: flex;
+  align-items: center;
+
+  .logo-header__icon {
+    display: inline-block;
+    width: 43px;
+    height: 43px;
+    background-color: #101828;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .logo-header__icon--logo {
+    background-image: url("../../../../../images/header-logo.svg");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .logo-header__text {
+    color: #101828;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: bold;
+  }
+}
