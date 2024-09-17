@@ -2,7 +2,13 @@ import HomeView from "../scripts/view/main/homeView/homeView";
 import CatalogView from "../scripts/view/main/catalogView/catalogView";
 import ReviewsView from "../scripts/view/main/reviewsView/reviewsView";
 import AboutView from "../scripts/view/main/aboutView/aboutView";
+import AccountView from "../scripts/view/main/accountView/accountView";
+import FavoritesView from "../scripts/view/main/favoritesView/favoritesView";
+import ShoppingCartView from "../scripts/view/main/shoppingCartView/shoppingCartView";
+import NotFoundView from "../scripts/view/main/notFoundView/notFountView";
+
 import HistoryRouterHandler from "../router/handler/historyRouterHandler";
+import HeaderLogoView from "../scripts/view/header/headerBodyView/headerLogoView/headerLogoView";
 
 export type ElementParams = {
   tag: string;
@@ -36,7 +42,15 @@ export type PagesParams = {
   NOT_FOUND: string;
 };
 
-export type Components = HomeView | CatalogView | ReviewsView | AboutView;
+export type Components =
+  | HomeView
+  | CatalogView
+  | ReviewsView
+  | AboutView
+  | AccountView
+  | FavoritesView
+  | ShoppingCartView
+  | NotFoundView;
 
 export type HistoryRouterHandlerParams = {
   nameEvent: string;
@@ -61,4 +75,18 @@ export type LinksParams = {
   ACCOUNT: string;
   FAVORITES: string;
   SHOPPING_CART: string;
+};
+
+export type PageParam = {
+  name: string;
+  callback: Function;
+};
+
+export type HeaderLinksElements = HeaderLogoView;
+
+export type NavLinks = {
+  HOME: "home";
+  CATALOG: "catalog";
+  REVIEWS: "reviews";
+  ABOUT: "about";
 };

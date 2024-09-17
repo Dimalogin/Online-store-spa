@@ -10,13 +10,17 @@ import { Pages } from "../../../../../pages/pages";
 
 // Types
 
-import { ElementParams } from "../../../../../types/types";
+import {
+  ElementParams,
+  HeaderLinksElements,
+  PageParam,
+} from "../../../../../types/types";
 
 // Pages
 
 // Templates
 
-import headerLogoTemplate from "../../../../../templates/headerLogoTemplate";
+import headerLogoTemplate from "../../../../../templates/header/headerLogoTemplate";
 
 // Parameters
 
@@ -32,7 +36,7 @@ const cssClasses = {
 export default class HeaderLogoView extends View {
   #headerLogoTemplate: DocumentFragment | null = null;
 
-  constructor() {
+  constructor(pageParam: PageParam) {
     const params: ElementParams = {
       tag: tag.TAG,
       classNames: [cssClasses.headerLogo, cssClasses.logoHeader],
@@ -45,7 +49,7 @@ export default class HeaderLogoView extends View {
 
     super(params);
     this.#initHeaderLogoTemplate();
-    this.#configureView();
+    this.#configureView(pageParam);
   }
 
   #initHeaderLogoTemplate() {
@@ -54,8 +58,8 @@ export default class HeaderLogoView extends View {
     ) as DocumentFragment;
   }
 
-  #configureView() {
-    
+  #configureView(pageParam: PageParam) {
+    this.viewElementCreator?.setCallback(pageParam.callback);
     this.viewElementCreator?.addInnerElement(this.#headerLogoTemplate!);
   }
 }

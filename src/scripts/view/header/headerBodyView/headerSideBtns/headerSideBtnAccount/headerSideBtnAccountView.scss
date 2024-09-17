@@ -1,0 +1,19 @@
+.side-btn-header__account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+.account__icon {
+  display: block;
+  min-width: 23px;
+  min-height: 23px;
+}
+
+.account__icon--account {
+  background-image: url("../../../../../../images/header/headerSideBtns/header-account.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

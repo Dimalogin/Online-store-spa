@@ -1,0 +1,18 @@
+.header__link {
+  color: #101828;
+  font-size: 16px;
+  letter-spacing: 4.5%;
+  line-height: 26px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "work_sansregular";
+}
+
+.header__link:hover {
+  color: #006d77;
+  transition: color 0.5s ease;
+}
+
+.header__link--selected {
+  color: #006d77;
+}

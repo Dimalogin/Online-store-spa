@@ -9,7 +9,7 @@ const Pages: PagesParams = {
   ABOUT: "about",
   ACCOUNT: "account",
   FAVORITES: "favorites",
-  SHOPPING_CART: "shoopingCard",
+  SHOPPING_CART: "shopping-cart",
   NOT_FOUND: "not-found",
 };
 

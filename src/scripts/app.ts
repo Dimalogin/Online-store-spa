@@ -19,6 +19,9 @@ import HomeView from "./view/main/homeView/homeView";
 import CatalogView from "./view/main/catalogView/catalogView";
 import ReviewsView from "./view/main/reviewsView/reviewsView";
 import AboutView from "./view/main/aboutView/aboutView";
+import AccountView from "./view/main/accountView/accountView";
+import FavoritesView from "./view/main/favoritesView/favoritesView";
+import ShoppingCartView from "./view/main/shoppingCartView/shoppingCartView";
 import FooterView from "./view/footer/footerView";
 import NotFoundView from "./view/main/notFoundView/notFountView";
 
@@ -76,7 +79,7 @@ export default class App {
   }
 
   #createHeaderView() {
-    this.#headerView = new HeaderView();
+    this.#headerView = new HeaderView(this.#router!);
     this.#wrapperView?.append(this.#headerView.getHtmlElement());
   }
 
@@ -138,6 +141,31 @@ export default class App {
           this.setContent(Pages.ABOUT, aboutView);
         },
       },
+
+      {
+        path: `${Pages.ACCOUNT}`,
+        callback: () => {
+          const accountView: AccountView = new AccountView(state);
+          this.setContent(Pages.ACCOUNT, accountView);
+        },
+      },
+      {
+        path: `${Pages.FAVORITES}`,
+        callback: () => {
+          const favoritesView: FavoritesView = new FavoritesView(state);
+          this.setContent(Pages.ACCOUNT, favoritesView);
+        },
+      },
+      {
+        path: `${Pages.SHOPPING_CART}`,
+        callback: () => {
+          const shoppingCartView: ShoppingCartView = new ShoppingCartView(
+            state
+          );
+          this.setContent(Pages.SHOPPING_CART, shoppingCartView);
+        },
+      },
+
       {
         path: `${Pages.NOT_FOUND}`,
         callback: () => {
@@ -151,8 +179,7 @@ export default class App {
   setContent(page: string, view: Components) {
     console.log(page);
     console.log(view);
-    //this.header.setSelectedItem(page);
-
+    this.#headerView!.setSelectedItem(page);
     this.#mainView!.setContent(view);
   }
 }

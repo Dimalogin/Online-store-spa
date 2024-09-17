@@ -13,8 +13,8 @@ export default class ElementCreator {
     this.#element = document.createElement(params.tag);
 
     this.#setCssClasses(params.classNames);
-    this.#setTextContent(params.textContent);
-    this.#setCallback(params.callback);
+    this.setTextContent(params.textContent);
+    this.setCallback(params.callback);
     this.#setAtrributes(params.attributes);
     this.#setDataAttributes(params.dataAttributes);
   }
@@ -23,11 +23,11 @@ export default class ElementCreator {
     cssClasses.map((cssClass) => this.#element?.classList.add(cssClass));
   }
 
-  #setTextContent(text: string): void {
+  setTextContent(text: string): void {
     this.#element!.textContent = text;
   }
 
-  #setCallback(callback: Function | null): void {
+  setCallback(callback: Function | null): void {
     if (typeof callback === "function") {
       this.#element?.addEventListener("click", (event) => callback(event));
     }

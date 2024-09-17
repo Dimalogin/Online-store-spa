@@ -13,6 +13,7 @@ import { Pages } from "../../../pages/pages";
 
 import { ElementParams } from "../../../types/types";
 import { LinksParams } from "../../../types/types";
+import Router from "../../../router/router";
 
 // Pages
 
@@ -38,9 +39,11 @@ const cssClasses = {
 
 export default class HeaderView extends View {
   #containerView: HTMLElement | null = null;
-  #headerBodyView: HTMLElement | null = null;
+  #headerBodyView: HeaderBodyView | null = null;
 
-  constructor() {
+  #router: Router | null = null;
+
+  constructor(router: Router) {
     const params: ElementParams = {
       tag: tag.TAG,
       classNames: [cssClasses.HEADER],
@@ -52,6 +55,8 @@ export default class HeaderView extends View {
     };
 
     super(params);
+
+    this.#router = router;
 
     this.#createContainerView();
     this.#createHeaderBodyView();
@@ -69,11 +74,15 @@ export default class HeaderView extends View {
   }
 
   #createHeaderBodyView(): void {
-    const headerBodyView = new HeaderBodyView();
-    this.#containerView?.appendChild(headerBodyView.getHtmlElement());
+    this.#headerBodyView = new HeaderBodyView(this.#router!);
+    this.#containerView?.appendChild(this.#headerBodyView.getHtmlElement());
   }
 
   #configureView() {
     this.viewElementCreator?.addInnerElement(this.#containerView!);
+  }
+
+  setSelectedItem(page: string) {
+    this.#headerBodyView?.setSelectedItem(page);
   }
 }
