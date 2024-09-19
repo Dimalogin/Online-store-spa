@@ -24,7 +24,7 @@ export default class Router {
     this.#handler = new HistoryRouterHandler(this.urlChangedHandler.bind(this));
 
     document.addEventListener("DOMContentLoaded", () => {
-      this.#handler!.navigate(null);
+      //this.#handler!.navigate(null);
     });
   }
 
