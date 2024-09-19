@@ -46,7 +46,11 @@ export default class Router {
         ? requestParams.path
         : `${requestParams.path}/${ID_SELECTOR}`;
 
+        console.log(pathForFind)
+
     const route = this.#routes!.find((item) => item.path === pathForFind);
+
+    
 
     if (!route) {
       this.redirectToNotFoundPage();
