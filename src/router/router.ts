@@ -24,7 +24,7 @@ export default class Router {
     this.#handler = new HistoryRouterHandler(this.urlChangedHandler.bind(this));
 
     document.addEventListener("DOMContentLoaded", () => {
-      //this.#handler!.navigate(null);
+      this.#handler!.navigate(null);
     });
   }
 
@@ -40,17 +40,13 @@ export default class Router {
   }
 
   urlChangedHandler(requestParams: HistoryRouterHandlerRequestParams) {
-    console.log(requestParams);
+    
     const pathForFind =
       requestParams.resource === ""
         ? requestParams.path
         : `${requestParams.path}/${ID_SELECTOR}`;
 
-        console.log(pathForFind)
-
     const route = this.#routes!.find((item) => item.path === pathForFind);
-
-    
 
     if (!route) {
       this.redirectToNotFoundPage();

@@ -58,7 +58,6 @@ export default class HeaderSideBtnShoppingCartView extends View {
   }
 
   #configureView(pageParam: PageParam) {
-    console.log(pageParam)
     this.viewElementCreator?.addInnerElement(
       this.#headerSideBtnShoppingCartView!
     );

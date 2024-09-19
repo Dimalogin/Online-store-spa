@@ -54,6 +54,8 @@ export default class App {
      */
     // this.router.setHashHandler();
 
+    console.log(true);
+
     this.#createWrapperView();
     this.#createHeaderView();
 
@@ -177,8 +179,6 @@ export default class App {
   }
 
   setContent(page: string, view: Components) {
-    console.log(page);
-    console.log(view);
     this.#headerView!.setSelectedItem(page);
     this.#mainView!.setContent(view);
   }

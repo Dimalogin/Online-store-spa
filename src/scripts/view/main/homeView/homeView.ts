@@ -32,7 +32,5 @@ export default class HomeView extends View {
     };
 
     super(params);
-
-    console.log("Home Page");
   }
 }
